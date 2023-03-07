@@ -9,5 +9,12 @@ description = "Fast format preserving (round-tripping) INI-parser"
 keywords = ["ini", "no-std", "config", "configuration", "parser"]
 categories = ["config", "parser-implementations"]
 
+[dev-dependencies]
+criterion = "0.4.0"
+
+[[bench]]
+name = "basic_bench"
+harness = false
+
 [dependencies]
 cfg-if = "1.0.0"
