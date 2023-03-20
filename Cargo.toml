@@ -1,0 +1,13 @@
+[package]
+name = "ini-roundtrip"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+authors = ["Arvid Norlander"]
+description = "Fast format preserving (round-tripping) INI-parser"
+keywords = ["ini", "no-std", "config", "configuration", "parser"]
+categories = ["config", "parser-implementations"]
+
+[dependencies]
+cfg-if = "1.0.0"
