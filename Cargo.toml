@@ -3,6 +3,7 @@ name = "ini-roundtrip"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
+repository = "https://github.com/VorpalBlade/ini-roundtrip"
 
 authors = ["Arvid Norlander"]
 description = "Fast format preserving (round-tripping) INI-parser"

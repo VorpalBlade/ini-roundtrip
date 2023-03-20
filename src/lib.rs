@@ -102,6 +102,7 @@ fn trim(s: &str) -> &str {
     s.trim_matches(|chr: char| chr.is_ascii_whitespace())
 }
 
+/// A parsed element of syntatic meaning
 #[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
 pub enum Item<'a> {
     /// Syntax error.
