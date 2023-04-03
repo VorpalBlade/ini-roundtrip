@@ -193,7 +193,7 @@ pub enum Item<'a> {
     },
 }
 
-impl<'a> core::fmt::Display for Item<'a> {
+impl<'a> fmt::Display for Item<'a> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match *self {
             Item::Error(error) => writeln!(f, "{}", error),
@@ -231,7 +231,7 @@ pub struct Parser<'a> {
 impl<'a> Parser<'a> {
     /// Constructs a new `Parser` instance.
     #[inline]
-    pub fn new(s: &'a str) -> Parser<'a> {
+    pub const fn new(s: &'a str) -> Parser<'a> {
         let state = s.as_bytes();
         Parser {
             line: 0,
@@ -274,7 +274,7 @@ impl<'a> Parser<'a> {
     }
 }
 
-impl<'a> core::iter::Iterator for Parser<'a> {
+impl<'a> Iterator for Parser<'a> {
     type Item = Item<'a>;
 
     fn next(&mut self) -> Option<Item<'a>> {

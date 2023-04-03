@@ -2,7 +2,6 @@
 
 [ [crates.io] ] [ [lib.rs] ] [ [docs.rs] ]
 
-
 `ini-roundtrip` is a fast format preserving (round-tripping) streaming INI
 parser that attempts to work on arbitrary INI files.
 
