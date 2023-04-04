@@ -196,20 +196,20 @@ pub enum Item<'a> {
 impl<'a> fmt::Display for Item<'a> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match *self {
-            Item::Error(error) => writeln!(f, "{}", error),
-            Item::Section { name, raw: _ } => writeln!(f, "[{}]", name),
+            Item::Error(error) => writeln!(f, "{error}"),
+            Item::Section { name, raw: _ } => writeln!(f, "[{name}]"),
             Item::SectionEnd => Ok(()),
             Item::Property {
                 key,
                 val: Some(value),
                 raw: _,
-            } => writeln!(f, "{}={}", key, value),
+            } => writeln!(f, "{key}={value}"),
             Item::Property {
                 key,
                 val: None,
                 raw: _,
-            } => writeln!(f, "{}", key),
-            Item::Comment { raw: comment } => writeln!(f, ";{}", comment),
+            } => writeln!(f, "{key}"),
+            Item::Comment { raw: comment } => writeln!(f, ";{comment}"),
             Item::Blank { raw: _ } => f.write_str("\n"),
         }
     }
@@ -280,7 +280,7 @@ impl<'a> Iterator for Parser<'a> {
     fn next(&mut self) -> Option<Item<'a>> {
         let s = self.state;
 
-        match s.first().cloned() {
+        match s.first().copied() {
             // Terminal case
             None => {
                 if self.section_ended {
