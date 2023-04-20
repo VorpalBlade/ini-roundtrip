@@ -7,7 +7,7 @@ keywords = ["ini", "no-std", "config", "configuration", "parser"]
 license = "MIT"
 name = "ini-roundtrip"
 repository = "https://github.com/VorpalBlade/ini-roundtrip"
-version = "0.1.0"
+version = "0.1.1"
 
 [dev-dependencies]
 criterion = "0.4.0"
