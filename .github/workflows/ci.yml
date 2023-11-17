@@ -79,4 +79,4 @@ jobs:
       - name: Cache builds
         uses: Swatinem/rust-cache@v2.7.1
       - name: Compile and test
-        run: cargo test --locked --verbose
+        run: cargo test --verbose
