@@ -62,3 +62,21 @@ jobs:
         uses: Swatinem/rust-cache@v2.7.1
       - name: Compile and test
         run: cargo test --target ${{ matrix.target }} --verbose
+
+  msrv:
+    # Test MSRV
+    name: "Test: MSRV (Linux): Rust ${{ matrix.rust }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        rust:
+          - 1.70.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        run: rustup install --profile minimal  ${{ matrix.rust }} && rustup default ${{ matrix.rust }}
+      - name: Cache builds
+        uses: Swatinem/rust-cache@v2.7.1
+      - name: Compile and test
+        run: cargo test --locked --verbose

@@ -7,6 +7,10 @@ parser that attempts to work on arbitrary INI files.
 
 The code is inspired by and heavily based on [ini_core].
 
+## MSRV
+
+Current minimum supported Rust version is 1.70.0. This may be updated as
+needed. MSRV bump is not considered a semver breaking change.
 
 [crates.io]: https://crates.io/crates/ini-roundtrip
 [docs.rs]: https://docs.rs/ini-roundtrip

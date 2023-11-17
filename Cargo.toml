@@ -7,6 +7,7 @@ keywords = ["ini", "no-std", "config", "configuration", "parser"]
 license = "MIT"
 name = "ini-roundtrip"
 repository = "https://github.com/VorpalBlade/ini-roundtrip"
+rust-version = "1.70.0"
 version = "0.1.2"
 
 [dev-dependencies]
