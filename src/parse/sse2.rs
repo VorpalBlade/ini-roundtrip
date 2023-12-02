@@ -12,7 +12,7 @@ pub fn find_nl(s: &[u8]) -> usize {
         let r_lit = _mm_set1_epi8(b'\r' as i8);
 
         while offset + 16 <= s.len() {
-            let block = _mm_loadu_si128(s.as_ptr().add(offset) as *const _);
+            let block = _mm_loadu_si128(s.as_ptr().add(offset).cast());
 
             let n_eq = _mm_cmpeq_epi8(n_lit, block);
             let r_eq = _mm_cmpeq_epi8(r_lit, block);
@@ -43,7 +43,7 @@ pub fn find_nl_chr(s: &[u8], chr: u8) -> usize {
         let c_lit = _mm_set1_epi8(chr as i8);
 
         while offset + 16 <= s.len() {
-            let block = _mm_loadu_si128(s.as_ptr().add(offset) as *const _);
+            let block = _mm_loadu_si128(s.as_ptr().add(offset).cast());
 
             let n_eq = _mm_cmpeq_epi8(n_lit, block);
             let r_eq = _mm_cmpeq_epi8(r_lit, block);

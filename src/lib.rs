@@ -84,7 +84,11 @@ No further processing of the input is done, eg. if escape sequences are necessar
 */
 
 #![no_std]
+#![warn(clippy::doc_markdown)]
 #![warn(clippy::needless_pass_by_value)]
+#![warn(clippy::ptr_as_ptr)]
+#![warn(clippy::redundant_closure_for_method_calls)]
+#![warn(clippy::semicolon_if_nothing_returned)]
 
 use core::{fmt, str};
 
