@@ -84,6 +84,7 @@ No further processing of the input is done, eg. if escape sequences are necessar
 */
 
 #![no_std]
+#![warn(clippy::needless_pass_by_value)]
 
 use core::{fmt, str};
 
