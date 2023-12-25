@@ -84,6 +84,7 @@ No further processing of the input is done, eg. if escape sequences are necessar
 */
 
 #![no_std]
+#![warn(unreachable_pub)]
 #![warn(clippy::doc_markdown)]
 #![warn(clippy::needless_pass_by_value)]
 #![warn(clippy::ptr_as_ptr)]

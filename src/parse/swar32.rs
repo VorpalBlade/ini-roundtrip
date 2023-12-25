@@ -1,5 +1,5 @@
 #[inline]
-pub fn find_nl(s: &[u8]) -> usize {
+pub(crate) fn find_nl(s: &[u8]) -> usize {
     let mut offset = 0;
 
     let n_lit = b'\n' as u32 * 0x01010101u32;
@@ -21,7 +21,7 @@ pub fn find_nl(s: &[u8]) -> usize {
 }
 
 #[inline]
-pub fn find_nl_chr(s: &[u8], chr: u8) -> usize {
+pub(crate) fn find_nl_chr(s: &[u8], chr: u8) -> usize {
     let mut offset = 0;
 
     let n_lit = b'\n' as u32 * 0x01010101u32;

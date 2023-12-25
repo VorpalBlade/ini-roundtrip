@@ -39,26 +39,26 @@ mod generic;
 cfg_if::cfg_if! {
     // These optimizations are little endian specific
     if #[cfg(not(target_endian = "little"))] {
-        pub use self::generic::*;
+        pub(crate) use self::generic::*;
     }
     else if #[cfg(all(any(target_arch = "x86", target_arch = "x86_64"), target_feature = "avx2"))] {
         mod avx2;
-        pub use self::avx2::*;
+        pub(crate) use self::avx2::*;
     }
     else if #[cfg(all(any(target_arch = "x86", target_arch = "x86_64"), target_feature = "sse2"))] {
         mod sse2;
-        pub use self::sse2::*;
+        pub(crate) use self::sse2::*;
     }
     else if #[cfg(target_pointer_width = "64")] {
         mod swar64;
-        pub use self::swar64::*;
+        pub(crate) use self::swar64::*;
     }
     else if #[cfg(target_pointer_width = "32")] {
         mod swar32;
-        pub use self::swar32::*;
+        pub(crate) use self::swar32::*;
     }
     else {
-        pub use self::generic::*;
+        pub(crate) use self::generic::*;
     }
 }
 
