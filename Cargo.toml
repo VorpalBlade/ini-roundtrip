@@ -3,6 +3,7 @@ authors = ["Arvid Norlander"]
 categories = ["config", "parser-implementations"]
 description = "Fast format preserving (round-tripping) INI-parser"
 edition = "2021"
+exclude = ["/.github/", "/.chglog/"]
 keywords = ["ini", "no-std", "config", "configuration", "parser"]
 license = "MIT"
 name = "ini-roundtrip"
