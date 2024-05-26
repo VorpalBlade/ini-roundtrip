@@ -3,7 +3,7 @@ extern crate std;
 use crate::*;
 
 #[track_caller]
-fn check(s: &str, expected: &[Item]) {
+fn check(s: &str, expected: &[Item<'_>]) {
     let value: std::vec::Vec<_> = Parser::new(s).collect();
     assert_eq!(value, expected);
 }
@@ -151,6 +151,34 @@ fn test_eos() {
                 key: "Action",
                 val: None,
                 raw: "Action",
+            },
+            Item::SectionEnd,
+        ],
+    );
+}
+
+#[test]
+fn test_empty() {
+    check(
+        "\r\nKey",
+        &[
+            Item::Blank { raw: "" },
+            Item::Property {
+                key: "Key",
+                val: None,
+                raw: "Key",
+            },
+            Item::SectionEnd,
+        ],
+    );
+    check(
+        "\r\nKey=",
+        &[
+            Item::Blank { raw: "" },
+            Item::Property {
+                key: "Key",
+                val: Some(""),
+                raw: "Key=",
             },
             Item::SectionEnd,
         ],

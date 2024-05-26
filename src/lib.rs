@@ -84,23 +84,19 @@ No further processing of the input is done, eg. if escape sequences are necessar
 */
 
 #![no_std]
-#![warn(unreachable_pub)]
-#![warn(clippy::doc_markdown)]
-#![warn(clippy::needless_pass_by_value)]
-#![warn(clippy::ptr_as_ptr)]
-#![warn(clippy::redundant_closure_for_method_calls)]
-#![warn(clippy::semicolon_if_nothing_returned)]
 
 use core::{fmt, str};
 
-/// All the routines here work only with and slice only at ascii characters
-/// This means conversion between `&str` and `&[u8]` is a noop even when slicing
+/// SAFETY: All the routines here work only with and slice only at ascii
+/// characters, and the user provided input is a &str. This means this crate
+/// cannot create invalid UTF-8 strings out of thin air and conversion between
+/// `&str` and `&[u8]` is a noop even when slicing
 #[inline]
 fn from_utf8(v: &[u8]) -> &str {
     #[cfg(not(debug_assertions))]
     return unsafe { str::from_utf8_unchecked(v) };
     #[cfg(debug_assertions)]
-    return str::from_utf8(v).unwrap();
+    return str::from_utf8(v).expect("Impossible: Non-UTF8");
 }
 
 /// Trims ascii whitespace from the start and end of the string slice.
