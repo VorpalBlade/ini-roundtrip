@@ -40,7 +40,7 @@ for (index, item) in ini::Parser::new(document).enumerate() {
 }
 ```
 
-The `SectionEnd` pseudo element is returned before a new section and at the end of the document.
+The `SectionEnd` pseudo-element is returned before a new section and at the end of the document.
 This helps processing sections after their properties finished parsing.
 
 The parser is very much line-based, it will continue no matter what and return nonsense as an item:
@@ -70,7 +70,7 @@ Lines missing a `=` are returned as [`Item::Property`] with `None` value. See be
 Format
 ------
 
-INI is not a well specified format, this parser tries to make as little assumptions as possible but it does make decisions.
+INI is not a well specified format, this parser tries to make as little assumptions as possible, but it does make decisions.
 
 * Newline is either `"\r\n"`, `"\n"` or `"\r"`. It can be mixed in a single document but this is not recommended.
 * Section header is `"[" section "]" newline`. `section` can be anything except contain newlines.
@@ -80,7 +80,7 @@ INI is not a well specified format, this parser tries to make as little assumpti
 
 Padding whitespace is always trimmed, but the raw line is always stored as well.
 
-No further processing of the input is done, eg. if escape sequences are necessary they must be processed by the caller.
+No further processing of the input is done, e.g. if escape sequences are necessary they must be processed by the caller.
 */
 
 #![no_std]
@@ -136,7 +136,7 @@ pub enum Item<'a> {
 
     /// End of section.
     ///
-    /// Pseudo element emitted before a [`Section`](Item::Section) and at the end of the document.
+    /// Pseudo-element emitted before a [`Section`](Item::Section) and at the end of the document.
     /// This helps processing sections after their properties finished parsing.
     ///
     /// ```

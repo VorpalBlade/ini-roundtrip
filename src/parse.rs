@@ -14,7 +14,7 @@ This module provides 2 functions: `find_nl` and `find_nl_chr`:
   If no match was found returns the length of the input.
 
 For more information on the SWAR approaches see: <http://0x80.pl/articles/simd-strfind.html#swar>.
-In reality I only see minor improvements with SWAR (about 33% faster).
+In reality, I only see minor improvements with SWAR (about 33% faster).
 
 */
 
