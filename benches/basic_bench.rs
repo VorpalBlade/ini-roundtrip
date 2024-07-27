@@ -5,6 +5,7 @@ use core::hint::black_box;
 use criterion::criterion_group;
 use criterion::criterion_main;
 use criterion::Criterion;
+
 use ini_roundtrip::Parser;
 
 const DOCUMENT: &str = "\
