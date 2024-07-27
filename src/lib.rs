@@ -85,7 +85,8 @@ No further processing of the input is done, eg. if escape sequences are necessar
 
 #![no_std]
 
-use core::{fmt, str};
+use core::fmt;
+use core::str;
 
 /// SAFETY: All the routines here work only with and slice only at ascii
 /// characters, and the user provided input is a &str. This means this crate
