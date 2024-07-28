@@ -111,7 +111,8 @@ pub enum Item<'a> {
     /// Syntax error.
     ///
     /// Section header element was malformed.
-    /// Malformed section headers are defined by a line starting with `[` but not ending with `]`.
+    /// Malformed section headers are defined by a line starting with `[` but
+    /// not ending with `]`.
     ///
     /// ```
     /// assert_eq!(
@@ -136,8 +137,9 @@ pub enum Item<'a> {
 
     /// End of section.
     ///
-    /// Pseudo-element emitted before a [`Section`](Item::Section) and at the end of the document.
-    /// This helps processing sections after their properties finished parsing.
+    /// Pseudo-element emitted before a [`Section`](Item::Section) and at the
+    /// end of the document. This helps processing sections after their
+    /// properties finished parsing.
     ///
     /// ```
     /// assert_eq!(
@@ -183,7 +185,8 @@ pub enum Item<'a> {
 
     /// Blank line.
     ///
-    /// Allows faithful reproduction of the whole ini document including blank lines.
+    /// Allows faithful reproduction of the whole ini document including blank
+    /// lines.
     ///
     /// ```
     /// assert_eq!(
