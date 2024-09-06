@@ -237,7 +237,8 @@ pub struct Parser<'a> {
 impl<'a> Parser<'a> {
     /// Constructs a new `Parser` instance.
     #[inline]
-    pub const fn new(s: &'a str) -> Parser<'a> {
+    #[must_use]
+    pub const fn new(s: &'a str) -> Self {
         let state = s.as_bytes();
         Parser {
             line: 0,
@@ -248,12 +249,14 @@ impl<'a> Parser<'a> {
 
     /// Returns the line number the parser is currently at.
     #[inline]
+    #[must_use]
     pub const fn line(&self) -> u32 {
         self.line
     }
 
     /// Returns the remainder of the input string.
     #[inline]
+    #[must_use]
     pub fn remainder(&self) -> &'a str {
         from_utf8(self.state)
     }
