@@ -18,10 +18,13 @@ In reality, I only see minor improvements with SWAR (about 33% faster).
 
 */
 
-// LLVM is big dum dum, trust me I'm a human
 #[cfg(not(debug_assertions))]
+/// This macro will use `unreachable_unchecked` in release mode, but check the
+/// condition in debug mode.
 macro_rules! unsafe_assert {
     ($e:expr) => {
+        // SAFETY: The safety comment is documented where the macro is used (that is why
+        // it has "unsafe" in the name)
         unsafe {
             if !$e {
                 ::core::hint::unreachable_unchecked();
@@ -30,8 +33,14 @@ macro_rules! unsafe_assert {
     };
 }
 #[cfg(debug_assertions)]
+/// This macro will use `unreachable_unchecked` in release mode, but check the
+/// condition in debug mode.
 macro_rules! unsafe_assert {
-    ($e:expr) => {};
+    ($e:expr) => {
+        if !$e {
+            panic!("assertion failed: {}", stringify!($e));
+        }
+    };
 }
 
 mod generic;

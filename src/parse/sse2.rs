@@ -1,12 +1,24 @@
 #[cfg(target_arch = "x86")]
 use core::arch::x86::*;
 #[cfg(target_arch = "x86_64")]
-use core::arch::x86_64::*;
+use core::arch::x86_64::_mm_cmpeq_epi8;
+#[cfg(target_arch = "x86_64")]
+use core::arch::x86_64::_mm_loadu_si128;
+#[cfg(target_arch = "x86_64")]
+use core::arch::x86_64::_mm_movemask_epi8;
+#[cfg(target_arch = "x86_64")]
+use core::arch::x86_64::_mm_or_si128;
+#[cfg(target_arch = "x86_64")]
+use core::arch::x86_64::_mm_set1_epi8;
 
 #[inline]
 pub(crate) fn find_nl(s: &[u8]) -> usize {
     let mut offset = 0;
 
+    // SAFETY:
+    // * We don't build this entire module if we don't have SSE2 (see parse.rs)
+    // * The while condition ensures the pointer is in bounds.
+    // * The load uses a variant that allows for unaligned loads (so that is safe).
     unsafe {
         let n_lit = _mm_set1_epi8(b'\n' as i8);
         let r_lit = _mm_set1_epi8(b'\r' as i8);
@@ -27,8 +39,10 @@ pub(crate) fn find_nl(s: &[u8]) -> usize {
         }
     }
 
+    // SAFETY: This assert won't fail if the code above is correct
     unsafe_assert!(offset <= s.len());
     offset += super::generic::find_nl(&s[offset..]);
+    // SAFETY: This assert won't fail if find_nl is correct (which we assume)
     unsafe_assert!(offset <= s.len());
     offset
 }
@@ -37,6 +51,10 @@ pub(crate) fn find_nl(s: &[u8]) -> usize {
 pub(crate) fn find_nl_chr(s: &[u8], chr: u8) -> usize {
     let mut offset = 0;
 
+    // SAFETY:
+    // * We don't build this entire module if we don't have SSE2 (see parse.rs)
+    // * The while condition ensures the pointer is in bounds.
+    // * The load uses a variant that allows for unaligned loads (so that is safe).
     unsafe {
         let n_lit = _mm_set1_epi8(b'\n' as i8);
         let r_lit = _mm_set1_epi8(b'\r' as i8);
@@ -59,8 +77,10 @@ pub(crate) fn find_nl_chr(s: &[u8], chr: u8) -> usize {
         }
     }
 
+    // SAFETY: This assert won't fail if the code above is correct
     unsafe_assert!(offset <= s.len());
     offset += super::generic::find_nl_chr(&s[offset..], chr);
+    // SAFETY: This assert won't fail if find_nl is correct (which we assume)
     unsafe_assert!(offset <= s.len());
     offset
 }

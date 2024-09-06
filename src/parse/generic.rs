@@ -7,6 +7,7 @@ pub(crate) fn find_nl(s: &[u8]) -> usize {
         }
         i += 1;
     }
+    // SAFETY: This assert won't fail if the code above is correct
     unsafe_assert!(i <= s.len());
     i
 }
@@ -20,6 +21,7 @@ pub(crate) fn find_nl_chr(s: &[u8], chr: u8) -> usize {
         }
         i += 1;
     }
+    // SAFETY: This assert won't fail if the code above is correct
     unsafe_assert!(i <= s.len());
     i
 }
