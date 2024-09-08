@@ -22,7 +22,7 @@ Actually a key[$d]
 k = V  ";
 
 fn parse(doc: &str) {
-    let value: std::vec::Vec<_> = Parser::new(black_box(doc)).collect();
+    let value: Vec<_> = Parser::new(black_box(doc)).collect();
     black_box(value);
 }
 
