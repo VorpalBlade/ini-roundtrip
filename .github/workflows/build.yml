@@ -46,7 +46,7 @@ jobs:
       - name: Install cross
         uses: taiki-e/install-action@cross
       - name: Cache builds
-        uses: Swatinem/rust-cache@v2.7.3
+        uses: Swatinem/rust-cache@v2.7.5
         with:
           key: ${{ matrix.target }}
       - name: Cross compile
@@ -73,7 +73,7 @@ jobs:
           rustup target add ${{ matrix.target }}
           rustup default stable
       - name: Cache builds
-        uses: Swatinem/rust-cache@v2.7.3
+        uses: Swatinem/rust-cache@v2.7.5
       - name: Compile
         run: cargo test --target ${{ matrix.target }} --verbose --no-run
       - name: Test
@@ -93,7 +93,7 @@ jobs:
       - name: Install Rust
         run: rustup install --profile minimal  ${{ matrix.rust }} && rustup default ${{ matrix.rust }}
       - name: Cache builds
-        uses: Swatinem/rust-cache@v2.7.3
+        uses: Swatinem/rust-cache@v2.7.5
       - name: Compile
         run: cargo test --verbose --no-run
       - name: Test
