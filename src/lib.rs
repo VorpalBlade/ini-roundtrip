@@ -199,7 +199,7 @@ pub enum Item<'a> {
     },
 }
 
-impl<'a> fmt::Display for Item<'a> {
+impl fmt::Display for Item<'_> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match *self {
             Item::Error(error) => writeln!(f, "{error}"),
@@ -344,11 +344,11 @@ impl<'a> Iterator for Parser<'a> {
                             raw: from_utf8(&s[..eol_or_eq]),
                         });
                     }
-                    return Some(Item::Property {
+                    Some(Item::Property {
                         key,
                         val: None,
                         raw: from_utf8(&s[..eol_or_eq]),
-                    });
+                    })
                 } else {
                     // Key + value case
                     let val_start = &s[eol_or_eq + 1..];
@@ -370,7 +370,7 @@ impl<'a> Iterator for Parser<'a> {
     }
 }
 
-impl<'a> core::iter::FusedIterator for Parser<'a> {}
+impl core::iter::FusedIterator for Parser<'_> {}
 
 mod parse;
 #[cfg(test)]
