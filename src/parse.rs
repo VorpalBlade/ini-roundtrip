@@ -36,7 +36,7 @@ macro_rules! unsafe_assert {
 /// This macro will use `unreachable_unchecked` in release mode, but check the
 /// condition in debug mode.
 macro_rules! unsafe_assert {
-    ($e:expr) => {
+    ($e:expr_2021) => {
         if !$e {
             panic!("assertion failed: {}", stringify!($e));
         }
