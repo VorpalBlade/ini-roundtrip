@@ -9,7 +9,7 @@ The code is inspired by and heavily based on [ini_core].
 
 ## MSRV
 
-Current minimum supported Rust version is 1.81.0. This may be updated as
+Current minimum supported Rust version is 1.85.0. This may be updated as
 needed. MSRV bump is not considered a semver breaking change.
 
 [crates.io]: https://crates.io/crates/ini-roundtrip
