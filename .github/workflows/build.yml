@@ -48,7 +48,7 @@ jobs:
       - name: Install cross
         uses: taiki-e/install-action@cfe1303741c2e620e5f7daa667105e0da1316db9 # v2.53.0
         with:
-          tool: cross@0.2.5
+          tool: cross@latest
       - name: Cache builds
         uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
         with:
