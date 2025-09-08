@@ -19,7 +19,7 @@ harness = false
 name = "basic_bench"
 
 [dependencies]
-cfg-if = "1.0.1"
+cfg-if = "1.0.3"
 
 [lints.rust]
 elided_lifetimes_in_paths = "warn"
