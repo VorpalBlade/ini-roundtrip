@@ -8,11 +8,11 @@ keywords = ["config", "configuration", "ini", "no-std", "parser"]
 license = "MIT"
 name = "ini-roundtrip"
 repository = "https://github.com/VorpalBlade/ini-roundtrip"
-rust-version = "1.85.0"
+rust-version = "1.86.0"
 version = "0.2.0"
 
 [dev-dependencies]
-criterion = "0.7.0"
+criterion = "0.8.0"
 
 [[bench]]
 harness = false
