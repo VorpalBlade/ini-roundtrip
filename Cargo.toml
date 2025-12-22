@@ -9,7 +9,7 @@ license = "MIT"
 name = "ini-roundtrip"
 repository = "https://github.com/VorpalBlade/ini-roundtrip"
 rust-version = "1.86.0"
-version = "0.2.0"
+version = "0.2.1"
 
 [dev-dependencies]
 criterion = "0.8.1"
